@@ -1,0 +1,40 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-column-gap: 50px;
+  padding: 0 30px;
+  align-items: center;
+  margin: 0 -30px;
+  background: var(--item-bg-color);
+  backdrop-filter: blur( 10px );
+  -webkit-backdrop-filter: blur( 3px );
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.navWrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logoWrap {
+  img {
+    max-width: 200px;
+  }
+}
+
+.logo {
+  width: 200px;
+  height: 100px;
+  background-image: var(--header-logo);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.toggleWrap {
+  display: flex;
+  justify-content: end;
+}

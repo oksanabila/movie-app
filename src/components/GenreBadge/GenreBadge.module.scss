@@ -1,0 +1,75 @@
+.badgeWrap {
+    margin: 10px;
+}
+
+.badge {
+    font-size: 13px;
+    line-height: 1.2;
+    display: inline-block;
+    padding: 3px 5px;
+    margin: 3px;
+    border-radius: 7px;
+    color: white;
+}
+
+.badge[data-name = ''] {
+    display: none;
+}
+
+.badge[data-name = 'Adventure'] {
+    background-color: rgba(24, 156, 213, 0.75);
+}
+.badge[data-name = 'Western'] {
+    background-color: rgba(139, 69, 19, 0.75);
+}
+.badge[data-name = 'War'] {
+    background-color: rgb(68, 68, 68);
+}
+.badge[data-name = 'Thriller'] {
+    background-color: rgba(138, 43, 226, 0.75);
+}
+.badge[data-name = 'TV Movie'] {
+    background-color: rgba(255, 215, 0, 0.75);
+}
+.badge[data-name = 'Action'] {
+    background-color: rgb(225, 111, 69);
+}
+.badge[data-name = 'Animation'] {
+    background-color: #478a47;
+}
+.badge[data-name = 'Comedy'] {
+    background-color: rgba(175, 150, 18, 0.75);
+}
+.badge[data-name = 'Crime'] {
+    background-color: rgba(178, 34, 34, 0.75);
+}
+.badge[data-name = 'Documentary'] {
+    background-color: rgba(47, 79, 79, 0.75);
+}
+.badge[data-name = 'Drama'] {
+    background-color: #CD5C5C;
+}
+.badge[data-name = 'Family'] {
+    background-color: #FFA500;
+}
+.badge[data-name = 'Fantasy'] {
+    background-color: #FF1493;
+}
+.badge[data-name = 'History'] {
+    background-color: #DAA520;
+}
+.badge[data-name = 'Horror'] {
+    background-color: rgba(139, 0, 0, 0.75);
+}
+.badge[data-name = 'Music'] {
+    background-color: #3a1016;
+}
+.badge[data-name = 'Mystery'] {
+    background-color: rgba(75, 0, 130, 0.75);
+}
+.badge[data-name = 'Romance'] {
+    background-color: #FF69B4;
+}
+.badge[data-name = 'Science Fiction'] {
+    background-color: #253362;
+}

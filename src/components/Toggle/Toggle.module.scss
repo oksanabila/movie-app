@@ -1,0 +1,91 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  display: block;
+  position: relative;
+  width: 120px;
+  height: 40px;
+  input {
+    display: none;
+  }
+  .slider {
+    position: absolute;
+    width: 120px;
+    height: 40px;
+    z-index: 1;
+    display: inline-block;
+    overflow: hidden;
+    background-color: #ffd300;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 1.4s;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 30px;
+      height: 30px;
+      background-color: #ffffff;
+      border-radius: 30px;
+      background-position: center;
+      background-size: 20px;
+      background-repeat: no-repeat;
+      background-image: url("../../img/sun.svg");
+    }
+
+    &:after {
+      transition: 0.4s;
+    }
+  }
+
+  .wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+    border-radius: 40px;
+    transition: all 1.4s;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 20%;
+      width: 60px;
+      height: 3px;
+      background: #ffffff;
+      border-radius: 100%;
+      opacity: 0.4;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 30%;
+      width: 35px;
+      height: 2px;
+      background: #ffffff;
+      border-radius: 100%;
+      opacity: 0.3;
+    }
+  }
+  input:checked + .slider {
+    background-color: transparent;
+    &:after {
+      transform: translateX(78px);
+      background-image: url("../../img/moon.svg");
+    }
+  }
+  input:checked ~ .wave {
+    display: block;
+    background-color: #080422;
+  }
+}
+
