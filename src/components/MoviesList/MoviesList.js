@@ -1,40 +1,40 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 
-import {moviesService} from "../../services/moviesService";
-import {genreService} from "../../services/genreService";
-import {MoviesListCard} from "./MoviesListCard/MoviesListCard";
 import css from './MoviesList.module.css'
+import {MoviesListCard} from "./MoviesListCard/MoviesListCard";
+import {useDispatch, useSelector} from "react-redux";
+import { fetchMovies, fetchGenres, setError, setCurrentPage } from '../../redux';
 
 const MoviesList = () => {
-    const [movies, setMovies] = useState([]);
-    const [genres, setGenre] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
+    const dispatch = useDispatch();
+    const movies = useSelector((state) => state.movies.movies);
+    const genres = useSelector((state) => state.movies.genres);
+    const currentPage = useSelector((state) => state.movies.currentPage);
+    const isLoading = useSelector((state) => state.movies.isLoading);
+    const error = useSelector((state) => state.movies.error);
 
     useEffect(() => {
-        moviesService.getbyNumber(currentPage)
-            .then(({data}) => setMovies(prevMovies => [...prevMovies, ...data.results]))
-            .catch(error => {
-                console.error('Помилка при отриманні фільмів:', error);
-            });
-
-        genreService.getAll()
-            .then(({data}) => setGenre(data.genres))
-            .catch(error => {
-                console.error('Помилка при отриманні жанрів:', error);
-            });
-    }, [currentPage])
+        dispatch(fetchMovies(currentPage))
+            .then(() => dispatch(fetchGenres()))
+            .catch((error) => dispatch(setError(error.message)));
+    }, [dispatch, currentPage]);
 
     const handleNextPage = () => {
-        setMovies([])
-        setCurrentPage(prevPage => prevPage + 1);
+        dispatch(setCurrentPage(currentPage + 1));
     };
 
     const handlePrevPage = () => {
         if (currentPage > 1) {
-            setMovies([])
-            setCurrentPage(prevPage => prevPage - 1);
+            dispatch(setCurrentPage(currentPage - 1));
         }
     };
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
 
     return (
